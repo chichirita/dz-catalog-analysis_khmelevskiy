@@ -42,7 +42,22 @@ def duration_in_hours(minutes):
     return f'{minutes//60}ч {minutes%60}м'
 
 def rating_tier(rating):
+    """Возвращает метку "шедевр" (9+), "хорошо" (7–8.9), "средне" (5–6.9)
+    или "слабо" (0–4.9).
+    """
     return ('шедевр' if rating >= 9 else
             'хорошо' if rating >= 7 else
             'средне' if rating >= 5 else
             'слабо')
+
+def decade_label(year):
+    """Возвращает метку "новые" (после 2020), "недавние" (2015–2020) 
+    или "старые" (раньше 2015).
+    """
+    match year:
+        case year if year > 2020:
+            return "новые"
+        case year if 2015 <= year <= 2020:
+            return "недавние"
+        case _:
+            return "старые"
