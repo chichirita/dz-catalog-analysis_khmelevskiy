@@ -25,7 +25,9 @@ movies = [
 
 def average_rating(movies):
     """Возвращает среднюю оценку по каталогу, округленную до одного знака."""
-    if not movies:
-        return 0.0
     return round(sum(movie['rating'] for movie in movies) / len(movies), 1)
 
+def catalog_age_stats(movies, current_year=2026):
+    """Возвращает кортеж (самый старый фильм в годах, самый новый фильм в годах, среднее)."""
+    ages = [current_year - movie["year"] for movie in movies]
+    return (max(ages), min(ages), math.ceil(sum(ages)/len(ages)))
