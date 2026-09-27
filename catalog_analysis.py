@@ -31,3 +31,7 @@ def catalog_age_stats(movies, current_year=2026):
     """Возвращает кортеж (самый старый фильм в годах, самый новый фильм в годах, среднее)."""
     ages = [current_year - movie["year"] for movie in movies]
     return (max(ages), min(ages), math.ceil(sum(ages)/len(ages)))
+
+def duration_in_hours(minutes):
+    """Переводит минуты в формат "2ч 35м", используя целочисленное деление и остаток от деления."""
+    return f'{minutes//60}ч {minutes%60}м'
