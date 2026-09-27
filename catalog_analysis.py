@@ -24,14 +24,25 @@ movies = [
 ]
 
 def average_rating(movies):
-    """Возвращает среднюю оценку по каталогу, округленную до одного знака."""
+    """Возвращает среднюю оценку по каталогу, 
+    округленную до одного знака.
+    """
     return round(sum(movie['rating'] for movie in movies) / len(movies), 1)
 
 def catalog_age_stats(movies, current_year=2026):
-    """Возвращает кортеж (самый старый фильм в годах, самый новый фильм в годах, среднее)."""
+    """Возвращает кортеж (самый старый фильм в годах, 
+    самый новый фильм в годах, среднее).
+    """
     ages = [current_year - movie["year"] for movie in movies]
     return (max(ages), min(ages), math.ceil(sum(ages)/len(ages)))
 
 def duration_in_hours(minutes):
-    """Переводит минуты в формат "2ч 35м", используя целочисленное деление и остаток от деления."""
+    """Переводит минуты в формат "2ч 35м", 
+    используя целочисленное деление и остаток от деления."""
     return f'{minutes//60}ч {minutes%60}м'
+
+def rating_tier(rating):
+    return ('шедевр' if rating >= 9 else
+            'хорошо' if rating >= 7 else
+            'средне' if rating >= 5 else
+            'слабо')
