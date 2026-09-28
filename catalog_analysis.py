@@ -103,14 +103,16 @@ def format_report_line(movie):
     """
     return f'"{movie['title']}" ({movie['year']}) - {movie['rating']}/10, {duration_in_hours(movie['duration_min'])}, жанры: {", ".join(sorted(movie["genres"]))}'
 
+def sort_by_rank(movies):
+    """Вспомогательная функция для сортировки фильмов по рейтингу."""
+    return sorted(movies, key = lambda movie: movie['rating'], reverse=True)
+
 def titles_sorted_by_rating(movies):
     """Возвращает список названий фильмов, отсортированных по убыванию рейтинга.
     """
-    ranked = sorted(movies, key = lambda movie: movie['rating'], reverse=True)
-    return [movie['title'] for movie in ranked]
+    return [movie['title'] for movie in sort_by_rank(movies)]
 
 def top_n_by_rating(movies, n=3):
     """Возвращает список из n кортежей (title, rating) — топ по рейтингу.
     """
-    ranked = sorted(movies, key = lambda movie: movie['rating'], reverse=True)
-    return [(movie['title'], movie['rating']) for movie in ranked][:n]
+    return [(movie['title'], movie['rating']) for movie in sort_by_rank(movies)[:n]]
