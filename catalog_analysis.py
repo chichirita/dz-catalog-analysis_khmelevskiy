@@ -64,6 +64,7 @@ def decade_label(year):
         case _:
             return "старые"
 
+#Фильмы, которые не являются комедиями
 for movie in movies:
     if 'comedy' in movie['genres']:
         continue
@@ -71,6 +72,7 @@ for movie in movies:
 
 idx = 0
 
+#Рейтинг фильма больще 9
 while idx != len(movies)-1:
     if movies[idx]['rating'] > 9:
         print(movies[idx]['title'])
@@ -79,4 +81,10 @@ while idx != len(movies)-1:
 else:
     print('Нет фильмов с рейтингом выше 9')
 
-
+def count_long_movies(movies, threshold=120):
+    """Возвращает количество фильмов, длительность которых превышает threshold минут."""
+    count = 0
+    for movie in movies:
+        if movie['duration_min'] > threshold:
+            count += 1
+    return count
