@@ -116,3 +116,11 @@ def top_n_by_rating(movies, n=3):
     """Возвращает список из n кортежей (title, rating) — топ по рейтингу.
     """
     return [(movie['title'], movie['rating']) for movie in sort_by_rank(movies)[:n]]
+
+def count_by_genre(movies):
+    """Возвращает словарь {жанр: количество фильмов}."""
+    counts = {}
+    for movie in movies:
+        for genre in movie['genres']:
+            counts[genre] = counts.get(genre, 0) + 1
+    return counts
