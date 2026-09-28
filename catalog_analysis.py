@@ -71,15 +71,13 @@ for movie in movies:
     print(movie['title'])
 
 idx = 0
-
-#Рейтинг фильма больще 9
 while idx != len(movies)-1:
-    if movies[idx]['rating'] > 9:
+    if movies[idx]['rating'] > 9.0:
         print(movies[idx]['title'])
         break
     idx += 1
 else:
-    print('Нет фильмов с рейтингом выше 9')
+    print('Шедевров не найдено')
 
 def count_long_movies(movies, threshold=120):
     """Возвращает количество фильмов, длительность которых превышает threshold минут."""
@@ -88,3 +86,10 @@ def count_long_movies(movies, threshold=120):
         if movie['duration_min'] > threshold:
             count += 1
     return count
+
+def normalize_title(title):
+    """Приводит строку к формату Title Case (каждое слово с заглавной буквы)."""
+    words = title.split()
+    return ' '.join([word[0].upper() + word[1:].lower() for word in words])
+
+print(normalize_title("the last bakery"))  # Вывод: "The Last Bakery"
