@@ -164,3 +164,6 @@ def iter_high_rated(movies, min_rating=8.0):
 
 for movie in iter_high_rated(movies):
     print(format_report_line(movie))
+
+#Cчитает суммарную длительность всех фильмов с рейтингом выше 7 в минутах.
+total_duration = sum(m["duration_min"] for m in movies if m["rating"] > 7)
