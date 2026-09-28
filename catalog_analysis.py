@@ -148,7 +148,6 @@ def iter_high_rated(movies, min_rating=8.0):
             yield movie
 
 def build_report(movies):
-    print()
     print('ОТЧЕТ ПО КАТАЛОГУ')
     print(f'Средний рейтинг: {average_rating(movies)}')
     print(f'Средний возраст фильмов: {catalog_age_stats(movies)[2]} лет')
