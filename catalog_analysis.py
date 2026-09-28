@@ -150,3 +150,8 @@ def common_actors(movie1, movie2):
     """Возвращает множество актеров, снимавшихся в обоих фильмах."""
     return set(movie1['actors']).intersection(set(movie2['actors']))
 
+def genres_only_in_one(movies_a, movies_b):
+    """Возвращает жанры, встречающиеся в movies_a, но не встречающиеся в movies_b."""
+    genres_a = all_genres(movies_a)
+    genres_b = all_genres(movies_b)
+    return genres_a - genres_b
