@@ -68,3 +68,15 @@ for movie in movies:
     if 'comedy' in movie['genres']:
         continue
     print(movie['title'])
+
+idx = 0
+
+while idx != len(movies)-1:
+    if movies[idx]['rating'] > 9:
+        print(movies[idx]['title'])
+        break
+    idx += 1
+else:
+    print('Нет фильмов с рейтингом выше 9')
+
+
