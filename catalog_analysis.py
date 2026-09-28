@@ -124,3 +124,11 @@ def count_by_genre(movies):
         for genre in movie['genres']:
             counts[genre] = counts.get(genre, 0) + 1
     return counts
+
+def actor_filmography(movies):
+    """Возвращает словарь {актер: [список названий фильмов]}."""
+    filmography = {}
+    for movie in movies:
+        for actor in movie['actors']:
+            filmography.setdefault(actor, []).append(movie['title'])
+    return filmography
