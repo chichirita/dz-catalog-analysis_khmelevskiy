@@ -70,6 +70,7 @@ for movie in movies:
         continue
     print(movie['title'])
 
+#Первый шедевр в каталоге
 idx = 0
 while idx != len(movies)-1:
     if movies[idx]['rating'] > 9.0:
@@ -132,3 +133,9 @@ def actor_filmography(movies):
         for actor in movie['actors']:
             filmography.setdefault(actor, []).append(movie['title'])
     return filmography
+
+#Словарь с фильмами выше среднего
+avg = average_rating(movies)
+rate_dict = {movie['title']:movie['rating'] for movie in movies if movie['rating'] > avg}
+print(rate_dict)
+
