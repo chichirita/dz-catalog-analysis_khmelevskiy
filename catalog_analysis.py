@@ -139,3 +139,11 @@ avg = average_rating(movies)
 rate_dict = {movie['title']:movie['rating'] for movie in movies if movie['rating'] > avg}
 print(rate_dict)
 
+def all_genres(movies):
+    """Возвращает множество всех уникальных жанров в каталоге."""
+    genres = set()
+    for movie in movies:
+        genres.update(movie['genres'])
+    return genres
+
+print(all_genres(movies))
