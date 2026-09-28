@@ -108,3 +108,9 @@ def titles_sorted_by_rating(movies):
     """
     ranked = sorted(movies, key = lambda movie: movie['rating'], reverse=True)
     return [movie['title'] for movie in ranked]
+
+def top_n_by_rating(movies, n=3):
+    """Возвращает список из n кортежей (title, rating) — топ по рейтингу.
+    """
+    ranked = sorted(movies, key = lambda movie: movie['rating'], reverse=True)
+    return [(movie['title'], movie['rating']) for movie in ranked][:n]
