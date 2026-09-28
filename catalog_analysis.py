@@ -167,34 +167,4 @@ def build_report(movies):
     print(f'Все жанры каталога: {", ".join(sorted(all_genres(movies)))}')
 
 if __name__ == '__main__':
-    # Фильмы, которые не являются комедиями
-    for movie in movies:
-        if 'comedy' in movie['genres']:
-            continue
-        print(movie['title'])
-
-    # Первый шедевр в каталоге
-    idx = 0
-    while idx < len(movies):
-        if movies[idx]['rating'] > 9.0:
-            print(movies[idx]['title'])
-            break
-        idx += 1
-    else:
-        print('Шедевров не найдено')
-        
-    # Словарь с фильмами выше среднего
-    avg = average_rating(movies)
-    rate_dict = {movie['title']: movie['rating'] 
-                for movie in movies if movie['rating'] > avg}
-    print(rate_dict)
-
-    # Выводит на экран все фильмы с рейтингом выше 8.0
-    for movie in iter_high_rated(movies):
-        print(format_report_line(movie))
-
-    # Cчитает суммарную длительность всех фильмов с рейтингом выше 7 в минутах.
-    total_duration = sum(m["duration_min"] for m in movies if m["rating"] > 7)
-    print(total_duration)
-
     build_report(movies)
