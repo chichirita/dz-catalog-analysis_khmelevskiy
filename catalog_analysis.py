@@ -97,3 +97,9 @@ def make_slug(title):
     """Превращает нормализованное название в «слаг» вида the-quiet-algorithm.
     """
     return title.lower().replace(' ', '-')
+
+def format_report_line(movie):
+    """Возвращает единую строку с описанием фильма.
+    """
+    return f'"{movie['title']}" ({movie['year']}) - {movie['rating']}/10, {duration_in_hours(movie['duration_min'])}, жанры: {", ".join(sorted(movie["genres"]))}'
+
