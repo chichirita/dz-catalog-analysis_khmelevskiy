@@ -146,4 +146,7 @@ def all_genres(movies):
         genres.update(movie['genres'])
     return genres
 
-print(all_genres(movies))
+def common_actors(movie1, movie2):
+    """Возвращает множество актеров, снимавшихся в обоих фильмах."""
+    return set(movie1['actors']).intersection(set(movie2['actors']))
+
