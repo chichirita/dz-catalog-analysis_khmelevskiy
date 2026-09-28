@@ -88,8 +88,12 @@ def count_long_movies(movies, threshold=120):
     return count
 
 def normalize_title(title):
-    """Приводит строку к формату Title Case (каждое слово с заглавной буквы)."""
+    """Приводит строку к формату Title Case (каждое слово с заглавной буквы).
+    """
     words = title.split()
     return ' '.join([word[0].upper() + word[1:].lower() for word in words])
 
-print(normalize_title("the last bakery"))  # Вывод: "The Last Bakery"
+def make_slug(title):
+    """Превращает нормализованное название в «слаг» вида the-quiet-algorithm.
+    """
+    return title.lower().replace(' ', '-')
